@@ -6,6 +6,7 @@ NAME = Whataver
 OBJS = $(SRCS:.cpp=.o)
 HEADER = Whatever.hpp
 
+
 all: $(NAME)	
 
 $(NAME): $(OBJS)

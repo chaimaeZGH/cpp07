@@ -16,6 +16,7 @@ T min(T a, T b)
         return a;
     return b;
 }
+
 template <typename T>
 T max(T a, T b)
 {
