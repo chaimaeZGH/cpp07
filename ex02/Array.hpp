@@ -7,57 +7,58 @@ class Array
 {
     private:
         T *elements;
-        unsigned int ssize;
+        unsigned int t_size;
     public :
-    Array() : elements(NULL), ssize(0)
+    Array() : elements(NULL), t_size(0)
     {}
-    Array(unsigned int n) : ssize(n)
+    Array(unsigned int n) : t_size(n)
     {
         elements = new T[n]();
     }
-
     ~Array()
     {
         delete[] elements;
     }
-
-    Array(const Array &other) : ssize(other.ssize)
+    Array(const Array &other) : t_size(other.t_size)
     {
-        elements = new T[other.ssize];
-        for (unsigned int i = 0; i < ssize; i++)
+        elements = new T[other.t_size];
+        int i =0;
+        while(i < t_size)
+        {
             elements[i] = other.elements[i];
+            i++;
+        }
     }
-
     Array &operator=(const Array &other)
     {
         if (this == &other)
             return *this;
         delete[] elements;
-        ssize = other.ssize;
-        elements = new T[other.ssize];
-        for (unsigned int i = 0; i < ssize; i++)
+        t_size = other.t_size;
+        elements = new T[other.t_size];
+        int i = 0;
+        while(i < t_size)
+        {
             elements[i] = other.elements[i];
+            i++;
+        }
         return *this;
     }
-
     T &operator[](unsigned int index)
     {
-        if (index >= ssize || index < 0)
+        if (index >= t_size || index < 0)
             throw std::out_of_range("Index out of bounds");
         return elements[index];
     }
-
     const T &operator[](unsigned int index) const
     {
-        if (index >= ssize || index < 0)
+        if (index >= t_size || index < 0)
             throw std::out_of_range("Index out of bounds");
         return elements[index];
     }
-
     unsigned int size() const
     {
-        return ssize;
+        return t_size;
     }
 };
-
-#endif
+#endif 
